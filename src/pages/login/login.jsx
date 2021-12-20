@@ -22,13 +22,20 @@ class Login extends React.Component {
   async onFinish(values){
     try {
       const result = await Serv.reqLogin(values.username,values.password)
-      // let {data} = response
+      // let {data} = response      
+
       if(result.status === 0){ //登录成功
+
         message.success('登录成功')
+
         const user = result.data
+
         memoryUtils.user = user
+
         storageUtils.saveUser(user) //保存到local
+
         this.props.history.replace('/')
+
       }else{
         message.error(result.msg)
       }
@@ -41,8 +48,9 @@ class Login extends React.Component {
   render() {
       //判断是否已登录
       const user =  memoryUtils.user
+
       if(user && user._id){
-        // console.log(user);
+        //console.log(user);
         return <Redirect to='/'/>
       }
     return (
