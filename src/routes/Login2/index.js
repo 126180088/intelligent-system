@@ -27,6 +27,10 @@ class LoginForm extends React.Component {
     })
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        
+        const result = await Serv.reqLogin(values.username,values.password)
+
+        
         const users = this.props.appStore.users
         // 检测用户名是否存在
         const result = users.find(item => item.username === values.username)
