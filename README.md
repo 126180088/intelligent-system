@@ -1,77 +1,105 @@
-## 基于React+antd实现后台模板
-自己利用业余时间，基于React+antd写了一个后台管理模板。主要是熟悉antd组件和React，页面主要还是展示页面,比较简单不涉及后台交互。
+## React 后台管理系统
 
-github地址：[基于React+antd实现后台模板](https://github.com/z-9527/react-admin-master)  
-预览地址：[预览地址](http://47.99.130.140/project/admin)
-<br/>
+> [项目预览地址](https://ltadpoles.github.io)
 
-项目重构地址：[react+koa实现登陆、聊天、留言板功能后台](https://github.com/z-9527/admin)  
-重构预览地址：[重构预览地址](http://47.99.130.140/admin/)
+> [Hook 版本](https://github.com/ltadpoles/react-admin/tree/hook)
 
-2019.3.19更新   
-今天回顾了一下项目，发现组件写的有问题，公共组件中不应该写业务逻辑，业务逻辑应该通过props或传递事件来实现；或者再用容器组件封装。  
-webstorm打开项目时占用内存过高，不知道是不是代码的问题。  
-项目的初衷是为了学习和总结，可能前期写的或多或少有些问题，但正是通过解决这些问题才能不断的提升。
-<br/>
+基于 `React` 生态系统搭建的后台管理系统模板
 
-2019.3.7更新    
-登录后浏览器后退按钮可以回到登录页，登录页不登录，通过浏览器的前进又可直接进入前台。
-我在登录页componentWillMount生命周期加了判断，如果已经登录，重定向到前页面（也可以设置退出登录）
-<br/>
+此项目为闲暇时间所做，主要是为了熟悉 `React` 项目的开发流程，打造一个快速开发后台管理系统的模板
 
+既为模板，可能就添加了一些你觉得并不需要的东西，比如菜单栏收缩将判断值存储在 `Redux` 之中，其实完全可以采用组件传值的方式解决，并不需要引入 `Redux` 。添加这个东西只是为了方便项目的拓展、展示它的使用方式。当然，如果你不需要，完全可以很简单的移除它们
+
+由于每个管理项目可能会有不同的定制化需求，所以对于模板中的一些功能并没有做完善的封装，比如对 `axios` 的封装、前端路由权限的控制。当然，结构或者思路已经存在代码之中了,只需要添加具体的业务代码即可
+
+此项目会不断进行优化迭代，后期可能会增加 `react-hook` 版本
+
+如果觉得不错或者对你有些许的帮助，欢迎 `star`，或者你有更好的实现方式、有趣的 `idea`，也欢迎留言交流 
+
+如果你想了解项目更为详细的信息，推荐阅读以下文章
+
+- [如何打造 react 后台管理系统](https://github.com/ltadpoles/web-document/blob/master/React/%E5%BF%AB%E9%80%9F%E6%89%93%E9%80%A0react%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.md)
+
+以下为项目基本信息↓
 
 ### 技术栈
 
- - react
- - antd
- - react-router
- - mobx
- - canvas
- - ES6
- - cookie
+`React@16.10.1 + React-Router@5.1.1 + Redux@4.0.4 + Antd@3.23.5 + Axios@0.19.0`
 
-自己参考了其他优秀的插件，比如[动态打字效果](https://blog.csdn.net/qq_37860930/article/details/80859473)、背景粒子效果、[shuffle（洗牌）](https://github.com/Vestride/Shuffle)，[全屏插件](https://github.com/sindresorhus/screenfull.js)等，自己对有些插件封装成类使用
+> `Create React App`    脚手架工具快速搭建项目结构
 
-所有路由都需要登录才可进入，自己封装了PrivateRoute组件来实现路由认证，登录信息保存在cookie中，原本是保存在store中，但是刷新页面后登录状态丢失，所以就保存在cookie中
-登录背景图太大，使用了[TinyPNG](https://tinypng.com/)进行压缩，并编写了一个loading效果
-<br/>
+> `react-loadable@5.5.0`    路由懒加载
 
-### 项目目录结构
+> `react-redux@7.1.1`     配合 `Redux` 更舒心
 
-<img src="https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/111.png?raw=true"/>
-assets----存储静态图片资源和共用icon图标<br/>
-components----存储共用组件<br/>
-routes----业务页面入口和常用模板<br/> 
-store----状态管理<br/>
-utils----工具函数<br/>
-<br/>
+> `animate.css@3.7.2`     页面动画展示
 
-### 项目截图
+> `braft-editor@2.3.8`    富文本插件
 
-<img src="https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/01.png?raw=true"/>  
-<img src="https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/02.png?raw=true"/>  
-<img src="https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/03.png?raw=true"/>  
-<img src="https://github.com/zhangZhiHao1996/image-store/blob/master/react-admin-master/04.png?raw=true"/>  
-<br/>
+> `echarts@4.4.0`   数据可视化
 
-### 问题
+> `nprogress@0.2.0`     顶部加载条
 
-整个demo不复杂，主要是熟悉react和路由等，在打包的过程中出现了一点小问题。我打包的文件是放在服务器二级目录下，所以打包的路径要改为相对路径，不能使用绝对路径，我在package.json中添加了homepage:'.'解决了路径问题。然后BrowserRouter加上了 basename=‘二级目录名称’ 属性，结果还是出现js路径错误，我一直以为是webpack打包的问题，找了很久才发现是因为BrowserRouter，将BrowserRouter改为HashRouter就访问正确。  
-使用react-router（v4）时，如果有服务器端的动态支持，建议使用 BrowserRouter，否则建议使用 HashRouter。  
-BrowserRouter和HashRouter其实就是前端路由的两种实现方式，一种是hash和一种是HTML5的history，网上有很介绍。  
-可以参考：[关于react 在打包后：“找不到资源路径”的问题、部署到服务器二级目录 “打开为空白” 的问题](https://blog.csdn.net/Sophie_U/article/details/80006723)
-<br/>
+> `screenfull@5.0.0`    全屏插件
 
-### 最后
-demo是我断断续续写的，只有下班和周末有时间。写demo的目的主要是熟悉React和react-router以及antd，整个demo中参考了一些其他人的想法，如动画效果等。另外基于vue的个人项目可以看这个[仿制移动端QQ音乐](https://blog.csdn.net/qq_37860930/article/details/80586698)
-<br/>
+> `prettier@1.18.2`    代码风格统一
 
-### 其他个人项目
+### 基本功能
 
-- [基于vue+vue-router+jsonp+vuex仿制的移动端`QQ音乐`](https://github.com/zhangZhiHao1996/vue-music-master)
-- [基于React-Antd的`后台模板Demo`](https://github.com/zhangZhiHao1996/react-admin-master)
-- [基于原生小程序精仿的`猫眼电影小程序`](https://github.com/zhangZhiHao1996/weapp-movie-master)
+- [x] 路由懒加载
+- [x] 面包屑导航
+- [x] 常用 UI 展示
+- [x] echarts 全屏展示
+- [x] 登陆/注销功能
+- [x] axios 封装
+- [x] 简单权限管理
 
-<br/>
+### 项目结构
 
-`觉得不错的给个star鼓励支持！^_^`
+```
+├── public                   # 不参与编译的资源文件
+├── src                      # 主程序目录
+│   ├── api                     # axios 封装
+│   ├── assets                  # 资源文件
+│   │   ├── font                    # 字体文件
+│   │   └── images                  # 图片资源
+│   ├── components              # 全局公共组件
+│   │   ├── CustomBreadcrumb        # 面包屑导航
+│   │   └── CustomMenu              # menu 菜单
+│   ├── contatiners             # 页面结构组件
+│   ├── routes                  # 路由目录
+│   ├── store                   # redux 配置
+│   ├── style                   # 样式目录
+│   ├── utils                   # 工具类
+│   ├── views                   # UI 页面
+│   ├── APP.js                  # App.js
+│   └── index.js                # index.js
+├── .prettierrc.js           # 代码规范
+├── config-overrides.js      # antd 样式按需加载
+```
+
+### 使用方法
+
+```npm
+git clone https://github.com/ltadpoles/react-admin.git
+
+cd react-admin
+
+// 安装依赖
+yarn
+
+// 启动
+yarn start
+
+// 打包
+yarn build
+
+```
+
+### 截图
+
+![image](https://raw.githubusercontent.com/ltadpoles/react-admin/master/src/assets/images/index.jpg)
+
+![image](https://raw.githubusercontent.com/ltadpoles/react-admin/master/src/assets/images/form.jpg)
+
+![image](https://raw.githubusercontent.com/ltadpoles/react-admin/master/src/assets/images/editor.jpg)

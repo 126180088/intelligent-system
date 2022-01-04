@@ -1,22 +1,28 @@
-import React, {Component} from 'react';
-import PrivateRoute from './components/PrivateRoute'
-import {Route,Switch} from 'react-router-dom'
-import Login from './routes/Login/index'
-// import Login from './routes/Login2/index'
-import Index from './routes/Index/index'
-import './App.css'
-import './assets/font/iconfont.css'
+import React from 'react'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import loadable from './utils/loadable'
+import 'animate.css'
+import './style/base.scss'
+import './style/App.scss'
 
+// 公共模块
+const DefaultLayout = loadable(() => import(/* webpackChunkName: 'default' */ './containers'))
 
-class App extends Component {
-  render() {
-    return (
-      <Switch>
-        <Route path='/login' component={Login}/>
-        <PrivateRoute path='/' component={Index}/>
-      </Switch>
-    )
-  }
-}
+// 基础页面
+const View404 = loadable(() => import(/* webpackChunkName: '404' */ './views/Others/404'))
+const View500 = loadable(() => import(/* webpackChunkName: '500' */ './views/Others/500'))
+const Login = loadable(() => import(/* webpackChunkName: 'login' */ './views/Login'))
 
-export default App;
+const App = () => (
+    <Router>
+        <Switch>
+            <Route path='/' exact render={() => <Redirect to='/index' />} />
+            <Route path='/500' component={View500} />
+            <Route path='/login' component={Login} />
+            <Route path='/404' component={View404} />
+            <Route component={DefaultLayout} />
+        </Switch>
+    </Router>
+)
+
+export default App
