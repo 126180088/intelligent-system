@@ -2,15 +2,17 @@ const menu = [
     {
         key: '/index',
         title: '首页',
-        icon: 'home',
-        auth: [1]
+        icon: 'home'
     },
     {
         title: '通用',
         key: '/public',
-        icon: 'appstore',
-        auth: [1],
-        subs: [{ title: '按钮', key: '/public/button', icon: '' }, { title: '图标', key: '/public/icon', icon: '' }]
+        icon: '',
+        auth: ['普通管理员'],
+        subs: [
+            { title: '按钮', key: '/public/button', icon: '' },
+            { title: '图标', key: '/public/icon', icon: '' }
+        ]
     },
     {
         title: '导航',
@@ -24,7 +26,7 @@ const menu = [
     },
     {
         title: '表单',
-        key: '/form',
+        key: '',
         icon: 'form',
         subs: [
             { title: '基础表单', key: '/form/base-form', icon: '' },
@@ -70,10 +72,29 @@ const menu = [
         ]
     },
     {
+        title: '岗位信息',
+        key: '/station',
+        icon: 'appstore',
+        subs: [
+            { title: '岗位发布', key: '/station/station-info', icon: '' },
+            { title: '岗位总览', key: '/station/station-table', icon: '' },
+            { title: '我的收藏', key: '', icon: '' }
+        ]
+    },
+
+    {
+        title: '个人管理',
+        key: '/user',
+        icon: 'user',
+        subs: [
+            { title: '个人信息', key: '/user/user-info', icon: '' },
+            { title: '就业申请', key: '', icon: '' }
+        ]
+    },
+    {
         title: '关于',
         key: '/about',
-        icon: 'user',
-        auth: [1]
+        icon: 'info-circle'
     }
 ]
 

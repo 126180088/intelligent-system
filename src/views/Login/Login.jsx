@@ -22,23 +22,20 @@ class Login extends Component {
             if (!err) {
                 let { username, password } = values
                 axios
-                    .post(`${API}/Home/CreateToken`, { username, password })
+                    .post(`${API}/Home/LoginIn`, { username, password })
                     .then(res => {
-                        console.log(res)
-
                         if (res.data.status === 0) {
-                            localStorage.setItem('user', JSON.stringify(values))
-                            localStorage.setItem('token', res.data.data.token)
+                            localStorage.setItem('user', JSON.stringify(res.data.data))
                             this.props.history.push('/')
                             message.success('登录成功!')
                         } else {
-                            console.log(res.data.message);
+                            console.log(res.data.message)
                             message.success('登录失败!')
                             // 这里处理一些错误信息
                         }
                     })
                     .catch(err => {
-                        console.log(`请求错误：${err} + ${API}/Home/CreateToken`)
+                        console.log(`请求错误：${err} + ${API}/Home/LoginIn`)
                     })
 
                 // // 这里可以做权限校验 模拟接口返回用户权限标识
@@ -62,9 +59,9 @@ class Login extends Component {
 
     componentDidMount() {
         notification.open({
-            message: '欢迎使用后台管理平台',
+            message: '欢迎使用应届毕业生就业信息管理系统',
             duration: null,
-            description: '账号 admin(管理员) 密码 123'
+            description: '账号 admin1(管理员) 密码 123'
         })
     }
 

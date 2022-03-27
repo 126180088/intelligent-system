@@ -8,7 +8,6 @@ import echarts from 'echarts/lib/echarts'
 import avatar from '@/assets/images/user.jpg'
 import menu from './menu'
 import '@/style/layout.scss'
-
 import AppHeader from './AppHeader.jsx'
 import AppAside from './AppAside.jsx'
 import AppFooter from './AppFooter.jsx'
@@ -38,19 +37,15 @@ class DefaultLayout extends Component {
         message.success('登出成功!')
     }
 
-    userEdit = () =>{
-        
-    }
-
-
+    userEdit = () => {}
 
     getMenu = menu => {
         let newMenu,
-            auth = JSON.parse(localStorage.getItem('user')).auth
+            auth = JSON.parse(localStorage.getItem('user')).Role
         if (!auth) {
-            return menu
+            return null
         } else {
-            newMenu = menu.filter(res => res.auth && res.auth.indexOf(auth) !== -1)
+            newMenu = menu.filter(res => (res.auth && res.auth.indexOf(auth) !== -1) || res.auth == null)
             return newMenu
         }
     }
@@ -135,9 +130,4 @@ const dispatchToProp = dispatch => ({
     }
 })
 
-export default withRouter(
-    connect(
-        stateToProp,
-        dispatchToProp
-    )(DefaultLayout)
-)
+export default withRouter(connect(stateToProp, dispatchToProp)(DefaultLayout))

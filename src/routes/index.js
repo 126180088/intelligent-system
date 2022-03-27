@@ -30,6 +30,15 @@ const UploadView = loadable(() => import(/* webpackChunkName: 'upload' */ '@/vie
 const Three = loadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'))
 const About = loadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
 
+//个人设置
+const UserInfoView = loadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/UserView/UserInfoView'))
+
+//岗位信息
+const StationInfoView = loadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/StationView/StationInfoView'))
+const StationTableView = loadable(() =>
+    import(/* webpackChunkName: 'formBase' */ '@/views/StationView/StationTableView')
+)
+
 const routes = [
     { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },
     { path: '/public/button', exact: false, name: '按钮', component: ButtonView, auth: [1] },
@@ -48,7 +57,10 @@ const routes = [
     { path: '/others/editor', exact: false, name: '富文本', component: EditorView, auth: [1] },
     { path: '/others/upload', exact: false, name: '上传', component: UploadView, auth: [1] },
     { path: '/one/two/three', exact: false, name: '三级', component: Three },
-    { path: '/about', exact: false, name: '关于', component: About, auth: [1] }
+    { path: '/about', exact: false, name: '关于', component: About, auth: [1] },
+    { path: '/user/user-info', exact: false, name: '个人信息', component: UserInfoView },
+    { path: '/station/station-info', exact: false, name: '岗位发布', component: StationInfoView },
+    { path: '/station/station-table', exact: false, name: '岗位总览', component: StationTableView }
 ]
 
 export default routes
