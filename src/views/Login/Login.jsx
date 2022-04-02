@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Layout, Input, Icon, Form, Button, Divider, message, notification } from 'antd'
 import { withRouter } from 'react-router-dom'
 import axios from '@/api'
+import Qs from 'qs'
 import { API } from '@/api/config'
 import '@/style/view-style/login.scss'
 
@@ -20,12 +21,13 @@ class Login extends Component {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                let { username, password } = values
+                let { account, password } = values
                 axios
-                    .post(`${API}/Home/LoginIn`, { username, password })
+                    .post(`${API}/Home/LoginIn`,{ account, password })
                     .then(res => {
                         if (res.data.status === 0) {
-                            localStorage.setItem('user', JSON.stringify(res.data.data))
+                            let user =  JSON.parse(res.data.data)
+                            localStorage.setItem('user', JSON.stringify(user[0]))
                             this.props.history.push('/')
                             message.success('登录成功!')
                         } else {
@@ -80,7 +82,7 @@ class Login extends Component {
                         <Divider />
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Item>
-                                {getFieldDecorator('username', {
+                                {getFieldDecorator('account', {
                                     rules: [{ required: true, message: '请输入用户名!' }]
                                 })(
                                     <Input

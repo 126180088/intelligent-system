@@ -8,7 +8,7 @@ const menu = [
         title: '通用',
         key: '/public',
         icon: '',
-        auth: ['普通管理员'],
+        auth: ["1"],
         subs: [
             { title: '按钮', key: '/public/button', icon: '' },
             { title: '图标', key: '/public/icon', icon: '' }
@@ -18,6 +18,7 @@ const menu = [
         title: '导航',
         key: '/nav',
         icon: 'bulb',
+        auth: ["1"],
         subs: [
             { title: '下拉菜单', key: '/nav/dropdown', icon: '' },
             { title: '导航菜单', key: '/nav/menu', icon: '' },
@@ -28,6 +29,7 @@ const menu = [
         title: '表单',
         key: '',
         icon: 'form',
+        auth: ["1"],
         subs: [
             { title: '基础表单', key: '/form/base-form', icon: '' },
             { title: '步骤表单', key: '/form/step-form', icon: '' }
@@ -37,6 +39,7 @@ const menu = [
         title: '展示',
         key: '/show',
         icon: 'pie-chart',
+        auth: ["1"],
         subs: [
             { title: '表格', key: '/show/table', icon: '' },
             { title: '折叠面板', key: '/show/collapse', icon: '' },
@@ -48,7 +51,7 @@ const menu = [
         title: '其它',
         key: '/others',
         icon: 'paper-clip',
-        auth: [1],
+        auth: ["1"],
         subs: [
             { title: '进度条', key: '/others/progress', icon: '' },
             { title: '动画', key: '/others/animation', icon: '' },
@@ -62,6 +65,7 @@ const menu = [
         title: '多级导航',
         key: '/one',
         icon: 'bars',
+        auth: ["1"],
         subs: [
             {
                 title: '二级',

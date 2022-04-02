@@ -41,7 +41,7 @@ class DefaultLayout extends Component {
 
     getMenu = menu => {
         let newMenu,
-            auth = JSON.parse(localStorage.getItem('user')).Role
+            auth = JSON.parse(localStorage.getItem('user')).RoleId
         if (!auth) {
             return null
         } else {
