@@ -31,12 +31,17 @@ const Three = loadable(() => import(/* webpackChunkName: 'three' */ '@/views/Tes
 const About = loadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
 
 //个人设置
-const UserInfoView = loadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/UserView/UserInfoView'))
+const UserInfoView = loadable(() => import(/* webpackChunkName: 'userInfoView' */ '@/views/UserView/UserInfoView'))
+const UserEmploymentView = loadable(() =>
+    import(/* webpackChunkName: 'userEmploymentView' */ '@/views/UserView/UserEmploymentView')
+)
 
 //岗位信息
-const StationInfoView = loadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/StationView/StationInfoView'))
+const StationInfoView = loadable(() =>
+    import(/* webpackChunkName: 'stationInfoView' */ '@/views/StationView/StationInfoView')
+)
 const StationTableView = loadable(() =>
-    import(/* webpackChunkName: 'formBase' */ '@/views/StationView/StationTableView')
+    import(/* webpackChunkName: 'stationTableView' */ '@/views/StationView/StationTableView')
 )
 
 const routes = [
@@ -59,6 +64,7 @@ const routes = [
     { path: '/one/two/three', exact: false, name: '三级', component: Three },
     { path: '/about', exact: false, name: '关于', component: About, auth: [1] },
     { path: '/user/user-info', exact: false, name: '个人信息', component: UserInfoView },
+    { path: '/user/user-emp', exact: false, name: '就业申请', component: UserEmploymentView },
     { path: '/station/station-info', exact: false, name: '岗位发布', component: StationInfoView },
     { path: '/station/station-table', exact: false, name: '岗位总览', component: StationTableView }
 ]

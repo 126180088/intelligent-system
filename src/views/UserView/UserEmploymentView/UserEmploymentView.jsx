@@ -220,17 +220,17 @@ class FormStepView extends Component {
         return (
             <Layout className='animated fadeIn'>
                 <div>
-                    <CustomBreadcrumb arr={['表单', '步骤表单']}></CustomBreadcrumb>
+                    <CustomBreadcrumb arr={['个人信息', '就业申请']}></CustomBreadcrumb>
                 </div>
                 <Row>
                     <Col>
                         <div className='base-style'>
-                            <Divider orientation='left'>分步表单</Divider>
+                            <Divider orientation='left'>就业申请表</Divider>
                             <div>
                                 <Steps style={{ margin: '3rem auto', maxWidth: '65rem' }} current={current}>
-                                    <Step title='填写接收信息'></Step>
-                                    <Step title='确认接收信息'></Step>
-                                    <Step title='完成'></Step>
+                                    <Step title='填写就业申请表'></Step>
+                                    <Step title='确认就业申请表'></Step>
+                                    <Step title='成功提交'></Step>
                                 </Steps>
 
                                 {current === 0 && (
