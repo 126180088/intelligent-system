@@ -44,6 +44,9 @@ const StationTableView = loadable(() =>
     import(/* webpackChunkName: 'stationTableView' */ '@/views/StationView/StationTableView')
 )
 
+//就业申请审核
+const AppCheckView = loadable(() => import(/* webpackChunkName: 'AppCheckView' */ '@/views/AppCheckView'))
+
 const routes = [
     { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },
     { path: '/public/button', exact: false, name: '按钮', component: ButtonView, auth: [1] },
@@ -66,7 +69,8 @@ const routes = [
     { path: '/user/user-info', exact: false, name: '个人信息', component: UserInfoView },
     { path: '/user/user-emp', exact: false, name: '就业申请', component: UserEmploymentView },
     { path: '/station/station-info', exact: false, name: '岗位发布', component: StationInfoView },
-    { path: '/station/station-table', exact: false, name: '岗位总览', component: StationTableView }
+    { path: '/station/station-table', exact: false, name: '岗位总览', component: StationTableView },
+    { path: '/app/app-check', exact: false, name: '申请审核', component: AppCheckView }
 ]
 
 export default routes

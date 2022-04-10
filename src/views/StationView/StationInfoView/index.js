@@ -1,3 +1,3 @@
-import FormBaseView from './StationInfoView'
+import StationInfoView from './StationInfoView'
 
-export default FormBaseView
+export default StationInfoView

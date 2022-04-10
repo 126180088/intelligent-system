@@ -1,3 +1,3 @@
-import TableView from './StationTableView.jsx'
+import StationTableView from './StationTableView.jsx'
 
-export default TableView
+export default StationTableView

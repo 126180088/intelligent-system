@@ -1,3 +1,3 @@
-import FormBaseView from './UserInfoView.jsx'
+import UserInfoView from './UserInfoView.jsx'
 
-export default FormBaseView
+export default UserInfoView

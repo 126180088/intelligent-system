@@ -30,41 +30,6 @@ import '@/style/view-style/form.scss'
 const { Option } = Select
 const AutoCompleteOption = AutoComplete.Option
 
-const residences = [
-    {
-        value: '四川',
-        label: '四川',
-        children: [
-            {
-                value: '成都',
-                label: '成都',
-                children: [
-                    {
-                        value: '高新区',
-                        label: '高新区'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        value: '甘肃',
-        label: '甘肃',
-        children: [
-            {
-                value: '兰州',
-                label: '兰州',
-                children: [
-                    {
-                        value: '安宁区',
-                        label: '安宁区'
-                    }
-                ]
-            }
-        ]
-    }
-]
-
 class FromView extends Component {
     state = {
         confirmDirty: false,
@@ -166,12 +131,6 @@ class FromView extends Component {
                 .catch(err => {
                     console.log(`请求错误：${err} + ${API}/Station/StationAdd`)
                 })
-
-            // const values = {
-            //     ...fieldsValue,
-            //     'date-picker': fieldsValue['date-picker'] ? fieldsValue['date-picker'].format('YYYY-MM-DD') : ''
-            // }
-            // message.info('你很棒哦,这么快就填好了!')
         })
     }
 
@@ -289,8 +248,8 @@ class FromView extends Component {
 
                                 <Form.Item label='公司地址'>
                                     {getFieldDecorator('companyaddress', {
-                                        rules: [{ type: 'array', required: true, message: '请选择地址!' }]
-                                    })(<Cascader options={residences} placeholder='请选择地址' />)}
+                                        rules: [{ required: true, message: '请输入公司地址' }]
+                                    })(<Input placeholder='请输入公司地址' />)}
                                 </Form.Item>
 
                                 <Form.Item label={<span>公司详情&nbsp;</span>}>
