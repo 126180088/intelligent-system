@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
 import CustomBreadcrumb from '@/components/CustomBreadcrumb'
-import { Layout, Divider, Row, Col, Steps, Button, Form, Input, Select, Alert, Result, Cascader } from 'antd'
+import {
+    Layout,
+    Divider,
+    Row,
+    Col,
+    Steps,
+    Button,
+    Form,
+    Input,
+    Select,
+    Alert,
+    Result,
+    Cascader,
+    message,
+    Icon,
+    Upload
+} from 'antd'
 import '@/style/view-style/form.scss'
 import axios from '@/api'
 import { API } from '@/api/config'
@@ -8,6 +24,24 @@ import { number } from 'echarts/lib/export'
 
 const { Step } = Steps
 const { Option } = Select
+
+const props = {
+    name: 'file',
+    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    headers: {
+        authorization: 'authorization-text'
+    },
+    onChange(info) {
+        if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList)
+        }
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`)
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`)
+        }
+    }
+}
 
 const formItemLayout = {
     labelCol: {
@@ -218,7 +252,13 @@ class Step1 extends Component {
                                     message: '请上传文件'
                                 }
                             ]
-                        })(<Input placeholder='请上传文件' />)}
+                        })(
+                            <Upload {...props}>
+                                <Button>
+                                    <Icon type='upload' /> Click to Upload
+                                </Button>
+                            </Upload>
+                        )}
                     </Form.Item>
 
                     <Form.Item {...tailFormItemLayout}>

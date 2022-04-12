@@ -3,68 +3,11 @@ import CustomBreadcrumb from '@/components/CustomBreadcrumb'
 import axios from '@/api'
 import moment from 'moment'
 import { API } from '@/api/config'
-import {
-    Alert,
-    Layout,
-    Row,
-    Col,
-    Divider,
-    Form,
-    Button,
-    Icon,
-    Input,
-    InputNumber,
-    Checkbox,
-    Tooltip,
-    Cascader,
-    Select,
-    DatePicker,
-    Radio,
-    Rate,
-    Switch,
-    Slider,
-    AutoComplete,
-    message
-} from 'antd'
+import { Layout, Row, Col, Divider, Form, Button, Input, Select, DatePicker, Radio, AutoComplete, message } from 'antd'
 import '@/style/view-style/form.scss'
 
 const { Option } = Select
 const AutoCompleteOption = AutoComplete.Option
-
-const residences = [
-    {
-        value: 'sichuan',
-        label: '四川',
-        children: [
-            {
-                value: 'chengdu',
-                label: '成都',
-                children: [
-                    {
-                        value: 'gaoxin',
-                        label: '高新区'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        value: 'gansu',
-        label: '甘肃',
-        children: [
-            {
-                value: 'lanzhou',
-                label: '兰州',
-                children: [
-                    {
-                        value: 'anning',
-                        label: '安宁区'
-                    }
-                ]
-            }
-        ]
-    }
-]
 
 class FromView extends Component {
     state = {
@@ -92,7 +35,7 @@ class FromView extends Component {
             let Account = user.Account
 
             axios
-                .post(`${API}/Home/UpdataInfo`, { UserName, Password, Telephone, Email, Account,Sex,Birth })
+                .post(`${API}/Home/UpdataInfo`, { UserName, Password, Telephone, Email, Account, Sex, Birth })
                 .then(res => {
                     if (res.data.status === 0) {
                         user.UserName = UserName
@@ -197,21 +140,29 @@ class FromView extends Component {
                             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                                 <Form.Item label={<span>用户名&nbsp;</span>}>
                                     {getFieldDecorator('username', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("UserName")?JSON.parse(localStorage.getItem('user')).UserName:"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty(
+                                            'UserName'
+                                        )
+                                            ? JSON.parse(localStorage.getItem('user')).UserName
+                                            : '',
                                         rules: [{ required: true, message: '请输入用户名' }]
                                     })(<Input placeholder='请输入用户名' />)}
                                 </Form.Item>
 
                                 <Form.Item label={<span>账号&nbsp;</span>}>
                                     {getFieldDecorator('account', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("Account")?JSON.parse(localStorage.getItem('user')).Account:"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty('Account')
+                                            ? JSON.parse(localStorage.getItem('user')).Account
+                                            : '',
                                         rules: [{ required: true, message: '请输入用户名' }]
                                     })(<Input placeholder='请输入用户名' disabled />)}
                                 </Form.Item>
 
                                 <Form.Item label='性别'>
                                     {getFieldDecorator('sex', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("Sex")?JSON.parse(localStorage.getItem('user')).Sex:"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty('Sex')
+                                            ? JSON.parse(localStorage.getItem('user')).Sex
+                                            : '',
                                         rules: [{ required: true, message: '请选择性别' }]
                                     })(
                                         <Radio.Group>
@@ -221,22 +172,20 @@ class FromView extends Component {
                                     )}
                                 </Form.Item>
 
-                                {/* <Form.Item label='年龄'>
-                                    {getFieldDecorator('age', {
-                                        rules: [{ required: true, message: '请输入年龄' }]
-                                    })(<InputNumber placeholder='请输入年龄' style={{ width: '100%' }} />)}
-                                </Form.Item> */}
-
                                 <Form.Item label='出生年月'>
                                     {getFieldDecorator('birth', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("Birth") ?moment(JSON.parse(localStorage.getItem('user')).Birth):"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty('Birth')
+                                            ? moment(JSON.parse(localStorage.getItem('user')).Birth)
+                                            : '',
                                         rules: [{ type: 'object', required: true, message: '请选择日期' }]
                                     })(<DatePicker style={{ width: '100%' }} placeholder='请选择日期' />)}
                                 </Form.Item>
 
                                 <Form.Item label='邮箱'>
                                     {getFieldDecorator('email', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("Email")?JSON.parse(localStorage.getItem('user')).Email:"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty('Email')
+                                            ? JSON.parse(localStorage.getItem('user')).Email
+                                            : '',
                                         rules: [
                                             {
                                                 type: 'email',
@@ -259,7 +208,11 @@ class FromView extends Component {
 
                                 <Form.Item label='密码' hasFeedback>
                                     {getFieldDecorator('password', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("Password")?JSON.parse(localStorage.getItem('user')).Password:"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty(
+                                            'Password'
+                                        )
+                                            ? JSON.parse(localStorage.getItem('user')).Password
+                                            : '',
                                         rules: [
                                             {
                                                 required: true,
@@ -274,7 +227,11 @@ class FromView extends Component {
 
                                 <Form.Item label='联系电话'>
                                     {getFieldDecorator('telephone', {
-                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty("Telephone")?JSON.parse(localStorage.getItem('user')).Telephone:"",
+                                        initialValue: JSON.parse(localStorage.getItem('user')).hasOwnProperty(
+                                            'Telephone'
+                                        )
+                                            ? JSON.parse(localStorage.getItem('user')).Telephone
+                                            : '',
                                         rules: [{ required: true, message: '请输入联系电话!' }]
                                     })(<Input addonBefore={prefixSelector} />)}
                                 </Form.Item>

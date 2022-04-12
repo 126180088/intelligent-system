@@ -38,13 +38,13 @@ const AppHeader = props => {
             </div>
             <div className='right'>
                 <div className='mr15'>
-                    <a rel='noopener noreferrer' href='https://github.com/ltadpoles/react-admin' target='_blank'>
-                        <Icon type='github' style={{ color: '#000' }} />
+                    <a rel='noopener noreferrer' href='' target='_blank'>
+                        <Icon type='ant-design' style={{ color: '#000' }} />
                     </a>
                 </div>
                 <div className='mr15'>
                     <Badge dot={true} offset={[-2, 0]}>
-                        <a href='https://github.com/ltadpoles/react-admin' style={{ color: '#000' }}>
+                        <a href='' style={{ color: '#000' }}>
                             <Icon type='bell' />
                         </a>
                     </Badge>
