@@ -131,6 +131,10 @@ class UploadView extends Component {
                 <div>
                     <CustomBreadcrumb arr={['其它', '上传']}></CustomBreadcrumb>
                 </div>
+                <div className='base-style'>
+                    <h3>何时使用</h3>
+                    <p>上传是将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程</p>
+                </div>
                 <Row gutter={8}>
                     <Col span={12}>
                         <div className='base-style'>
@@ -140,6 +144,54 @@ class UploadView extends Component {
                                     <Icon type='upload' /> Click to Upload
                                 </Button>
                             </Upload>
+                        </div>
+                        <div className='base-style'>
+                            <Divider orientation='left'>照片墙</Divider>
+                            <div className='clearfix'>
+                                <Upload
+                                    action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+                                    listType='picture-card'
+                                    fileList={fileList}
+                                    onPreview={this.handlePreview}
+                                    onChange={this.handle_Change}>
+                                    {fileList.length >= 8 ? null : uploadButton}
+                                </Upload>
+                                <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+                                    <img alt='example' style={{ width: '100%' }} src={previewImage} />
+                                </Modal>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col span={12}>
+                        <div className='base-style'>
+                            <Divider orientation='left'>自定义模式</Divider>
+                            <Upload
+                                name='avatar'
+                                listType='picture-card'
+                                className='avatar-uploader'
+                                showUploadList={false}
+                                action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+                                beforeUpload={beforeUpload}
+                                onChange={this.handleChange}>
+                                {imageUrl ? (
+                                    <img src={imageUrl} alt='avatar' style={{ width: '100%' }} />
+                                ) : (
+                                    uploadButton
+                                )}
+                            </Upload>
+                        </div>
+                        <div className='base-style'>
+                            <Divider orientation='left'>可拖拽上传</Divider>
+                            <Dragger {...props}>
+                                <p className='ant-upload-drag-icon'>
+                                    <Icon type='inbox' />
+                                </p>
+                                <p className='ant-upload-text'>Click or drag file to this area to upload</p>
+                                <p className='ant-upload-hint'>
+                                    Support for a single or bulk upload. Strictly prohibit from uploading company data
+                                    or other band files
+                                </p>
+                            </Dragger>
                         </div>
                     </Col>
                 </Row>
