@@ -100,6 +100,11 @@ class FromView extends Component {
                         key: 'CompanyName'
                     },
                     {
+                        title: '文件',
+                        dataIndex: 'UFile',
+                        key: 'UFile'
+                    },
+                    {
                         title: '标签',
                         key: 'tags',
                         dataIndex: 'tags',
@@ -118,7 +123,14 @@ class FromView extends Component {
                     },
                     {
                         title: '操作',
-                        key: 'action'
+                        key: 'action',
+                        render: (text, record) => (
+                            <span>
+                                <Button type='link'>通过 {record.name}</Button>
+                                <Divider type='vertical' />
+                                <Button type='link'>不通过</Button>
+                            </span>
+                        )
                     }
                 ]
                 if (res.data.status === 0) {
